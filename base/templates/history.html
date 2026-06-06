@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'history.css' %}">
+{% endblock %}
+{% block abc %}
+<center>
+<h2 class="title">Bookings</h2>
+
+{% for b in bookings %}
+<div class="card">
+    
+    <div class="left">
+        
+        <h3>Name : {{ b.name }}</h3>
+        <p>E-mail : {{ b.email }}</p>
+        <p>Phone : {{ b.phone }}</p>
+        
+    </div>
+
+    <div class="center">
+        <h3>{{ b.airline }}</h3>
+        <p>{{ b.flight_no }}</p>
+        <p>From : {{ b.from_city }}</p>
+        <p>To : {{ b.to_city }}</p>
+        <p>Email : {{ b.name }}</p>
+
+        <a href="{% url 'update_booking' b.id %}" class="btn update">Update</a>
+    </div>
+
+    <div class="right">
+        <p>Phone : {{ b.phone }}</p>
+        <p>Departure : {{ b.departure_time }}</p>
+        <p>Date : {{ b.date }}</p>
+        <p>Price : ₹{{ b.price }}</p>
+
+        <a href="{% url 'delete_booking' b.id %}" class="btn delete">Cancel Booking</a>
+    </div>
+
+</div>
+{% endfor %}
+</center>
+{% endblock %}
+

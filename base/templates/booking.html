@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'booking.css' %}">
+{% endblock %}
+
+{% block abc %}
+<center>
+<div class="booking-container">
+
+    <h2>✈️ Plane Ticket Booking Form</h2>
+
+    <h3 class="section-title">Flight Details</h3>
+
+    <form method="POST" class="booking-form">
+        {% csrf_token %}
+
+        <!-- Flight Details (Readonly) -->
+        <label>Flight Company:</label>
+        <input type="text" value="{{ flight.airline }}" readonly>
+
+        <label>Flight Number:</label>
+        <input type="text" value="{{ flight.flight_no }}" readonly>
+
+        <label>From:</label>
+        <input type="text" value="{{ flight.from_city }}" readonly>
+
+        <label>To:</label>
+        <input type="text" value="{{ flight.to_city }}" readonly>
+
+        <label>Price:</label>
+        <input type="text" value="₹{{ flight.price }}" readonly>
+
+        <!-- User Details -->
+        <h3 class="section-title">Passenger Details</h3>
+
+        <label>Your Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Phone:</label>
+        <input type="text" name="phone" required>
+
+        <a href="{% url 'home' %}"><button type="submit" class="confirm-btn">Confirm Booking</button></a>
+
+    </form>
+
+</div>
+</center>
+{% endblock %}

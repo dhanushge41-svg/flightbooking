@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuickSky Flights</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">QuickSky Flights</div>
+    
+    <ul class="nav-links">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'history' %}">booking</a></li>
+        <li><a href="{% url 'historyf' %}">History</a></li>
+        <li><a href="{% url 'profile_' %}">Profile({{request.user.username}})</a></li>
+        <li><a href="{% url 'logout_' %}">Logout</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">About</a></li>
+        {% else %}
+        <li><a href="{% url 'login_' %}">Login</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+</body>
+</html>

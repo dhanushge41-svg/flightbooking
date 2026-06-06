@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block abc %}
+<center>
+<h1>RIGISTER HERE</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="">Firstname</label>
+        <input type="text" name="fname" id=""> <br><br>
+        <label for="">Lastname</label>
+        <input type="text" name="lname" id=""> <br><br>
+        <label for="">Email</label>
+        <input type="text" name="email" id=""> <br><br>
+        <label for="">Username</label>
+        <input type="text" name="uname" id=""> <br><br>
+        <label for="">Password</label>
+        <input type="text" name="psw" id=""> <br><br>
+        <button type="submit">submit</button>
+    </form>
+    <br><br><br>
+    {% if messages %}
+    {% for i in messages %}
+    <h2 style="color:red; font-family:cursive;">{{i}}</h2>
+    {% endfor %}
+    {% endif %}
+</center>
+{% endblock %}

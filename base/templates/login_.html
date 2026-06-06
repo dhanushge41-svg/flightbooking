@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block abc %}
+
+<center> 
+    <h1>Login Page</h1> <br><br>
+    {% if messages %}
+        {% for i in messages %}
+        <h2 style="color: red;">{{i}}</h2>
+        {% endfor %}
+    {% endif %} <br><br><br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <label for="">Username</label>
+        <input type="text" name="uname" id=""> <br><br>
+        <label for="">Password</label>
+        <input type="text" name="psw" id=""> <br><br>
+        <button type="submit">login</button> <br> <br>
+     
+
+    </form>
+    <br><br><br>
+    {% if  erorr %}
+    <h2 style="color: red;">Username is already exist</h2>
+    {% endif %}
+   <a href="{% url 'forget' %}">Forget password</a>
+</center>
+{% endblock %}

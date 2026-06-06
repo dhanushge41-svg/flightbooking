@@ -1,0 +1,33 @@
+.booking-container {
+    width: 60%;
+    margin: 40px auto;
+    background: #f4f7fb;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.section-title {
+    border-bottom: 2px solid #1e73be;
+    margin: 20px 0;
+    color: #1e73be;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-form input {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.confirm-btn {
+    margin-top: 20px;
+    padding: 12px;
+    background: #1e73be;
+    color: white;
+    border: none;
+}

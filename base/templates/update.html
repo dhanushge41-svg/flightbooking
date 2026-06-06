@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+<style>
+ 
+</style>
+{% endblock %}
+{% block abc %}
+<center>
+<h2>Update Booking</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }} <br> <br>
+    <button type="submit" class="btn update">Save</button>
+</form>
+</center>
+{% endblock %}

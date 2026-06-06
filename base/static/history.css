@@ -1,0 +1,41 @@
+body {
+    font-family: Arial;
+    background: #f5f5f5;
+}
+
+.title {
+    text-align: center;
+    margin: 20px;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.left, .center, .right {
+    width: 30%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.update {
+    background: green;
+}
+
+.delete {
+    background: red;
+}

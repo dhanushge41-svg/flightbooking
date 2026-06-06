@@ -1,0 +1,176 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #1a237e;
+    margin-top: 20px;
+    font-size: 36px;
+}
+
+.flight-container {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.flight-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.flight-card h2 {
+    color: #1565c0;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.flight-card p {
+    margin: 6px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.flight-card strong {
+    color: #000;
+}
+
+.book-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: #ff5722;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.book-btn:hover {
+    background: #e64a19;
+}
+.search-box {
+    width: 450px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.search-box label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #222;
+}
+
+.search-box input {
+    width: 280px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 18px;
+}
+
+.search-box button {
+    width: 220px;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 6px;
+    background: #0d47a1;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #1565c0;
+}
+</style>
+    
+{% endblock %}
+{% block abc %}
+  
+
+
+<center>
+    {% if messages %}
+    {% for i in messages %}
+    <h2 style="color: green; font-family:cursive;">{{i}}</h2>
+    {% endfor %}
+    {% endif %}  
+<div class="container">
+
+   
+    <form method="GET" class="search-box">
+        <div>
+            <label>From</label>
+            <input type="text" name="from" placeholder="Enter Departure City">
+        </div>
+        <br>
+        <div>
+            <label>To</label>
+            <input type="text" name="to" placeholder="Enter Destination City">
+        </div>
+        <br>
+        <button type="submit">Search Flights</button>
+    </form>
+
+    <hr>
+
+    <h2 class="title">Available Flights</h2>
+
+   
+    {% for flight in flights %}
+    <div class="flight-card">
+
+        <div class="left">
+            <h3>{{ flight.airline }}</h3>
+            <p>{{ flight.airline }} | Flight No: {{ flight.flight_no }}</p>
+            <p><strong>From:</strong> {{ flight.from_city }}</p>
+            <p><strong>To:</strong> {{ flight.to_city }}</p>
+        </div>
+
+        <div class="right">
+            <p><strong>Departure:</strong> {{ flight.departure_time }}</p>
+            <p><strong>Date:</strong> {{ flight.date }}</p>
+            <p><strong>Price:</strong> ₹{{ flight.price }}</p>
+            <a href="{% url 'booking' flight.id %}">
+            <button class="book-btn">Book Now</button></a>
+        </div>
+
+    </div>
+    {% empty %}
+    <p style="text-align:center;">No flights found</p>
+    {% endfor %}
+
+</div>
+</center>
+
+{% endblock %}
